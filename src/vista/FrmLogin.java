@@ -9,11 +9,10 @@ import utils.ThemeManager;
 
 /*@author Nelson*/
 public class FrmLogin extends javax.swing.JFrame {
-    private Negocio nlogin;
-    
+    private Negocio negocio;
     public FrmLogin(Negocio general) {
         initComponents();
-        this.nlogin = Negocio.getInstance();
+        this.negocio = Negocio.getInstance();
         
         ThemeManager.registerFrame(this);
         ThemeManager.applyTheme();
@@ -135,37 +134,31 @@ public class FrmLogin extends javax.swing.JFrame {
     private void campoUsuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoUsuKeyPressed
         enterLogin(evt);
     }//GEN-LAST:event_campoUsuKeyPressed
-
     private void campoConKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoConKeyPressed
         enterLogin(evt);
     }//GEN-LAST:event_campoConKeyPressed
-
     private void btnAcercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcercaActionPerformed
-        FrmAcerca acr = new FrmAcerca(nlogin);
+        FrmAcerca acr = new FrmAcerca(negocio);
         acr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAcercaActionPerformed
-
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         String contrasena = new String(campoCon.getPassword());
         String usuario = campoUsu.getText().trim();
-        DaoUsuario daoUser = new DaoUsuario(nlogin);
+        DaoUsuario daoUser = new DaoUsuario(negocio);
         String mensaje = daoUser.validarEntradaDeDatos(usuario, contrasena, errorUs, errorCon);
-
         if (mensaje.isEmpty()) {
             daoUser.processLogin(usuario, contrasena, this);
         } else {
             JOptionPane.showMessageDialog(null, mensaje, "Faltan Datos", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
-
     private void showHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showHideActionPerformed
         if (showHide.isSelected()) 
             campoCon.setEchoChar((char) 0);
         else 
             campoCon.setEchoChar('\u2022');
     }//GEN-LAST:event_showHideActionPerformed
-
     //Presionando el boton de Enter se acciona el boton de inigresar
     public void enterLogin(java.awt.event.KeyEvent evt){
         if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {

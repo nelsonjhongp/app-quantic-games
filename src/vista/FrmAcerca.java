@@ -2,22 +2,13 @@
 package vista;
 
 import controller.Negocio;
-import java.awt.Color;
-import java.awt.geom.RoundRectangle2D;
 
 /*@author Nelson*/
 public class FrmAcerca extends javax.swing.JFrame {
-    Negocio principal;
-    int xMouse, yMouse;
+    Negocio negocio;
     public FrmAcerca(Negocio general) {
         initComponents();
-        
-        if (general == null) {
-            System.out.println("No hay Negocio, se crea nueva instancia");
-            this.principal = new Negocio();
-        } else {
-            System.out.println("Hay Negocoi, se procede a incorporarlo");
-            this.principal =  general;}
+        this.negocio = Negocio.getInstance();
     }
 
     /**
@@ -31,180 +22,37 @@ public class FrmAcerca extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
-        Int1 = new javax.swing.JLabel();
-        Int2 = new javax.swing.JLabel();
-        Int3 = new javax.swing.JLabel();
-        Int4 = new javax.swing.JLabel();
-        Int5 = new javax.swing.JLabel();
-        btnVolver = new javax.swing.JPanel();
-        Volver = new javax.swing.JLabel();
-        header = new javax.swing.JPanel();
-        exitbtn = new javax.swing.JPanel();
-        btnExit = new javax.swing.JLabel();
-        minbtn = new javax.swing.JPanel();
-        btnMin = new javax.swing.JLabel();
-        titulo = new javax.swing.JLabel();
+        Integrante = new javax.swing.JLabel();
+        btnVolver = new javax.swing.JButton();
         RogImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
-        setUndecorated(true);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Titulo.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        Titulo.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Titulo.setForeground(new java.awt.Color(255, 255, 255));
-        Titulo.setText("Proyecto POO - Avance Algrotimos 01");
-        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 250, -1));
+        Titulo.setText("Proyecto Quantic Games");
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 260, 30));
 
-        Int1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        Int1.setForeground(new java.awt.Color(255, 255, 255));
-        Int1.setText("- E  U2122XXX");
-        jPanel1.add(Int1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 20));
+        Integrante.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        Integrante.setForeground(new java.awt.Color(255, 255, 255));
+        Integrante.setText("- Nelson Jhon Gil Pari - U21221490");
+        jPanel1.add(Integrante, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 240, 20));
 
-        Int2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        Int2.setForeground(new java.awt.Color(255, 255, 255));
-        Int2.setText("- D  U2122XXX");
-        jPanel1.add(Int2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 160, 20));
-
-        Int3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        Int3.setForeground(new java.awt.Color(255, 255, 255));
-        Int3.setText("- C  U2122XXX");
-        jPanel1.add(Int3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 160, 20));
-
-        Int4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        Int4.setForeground(new java.awt.Color(255, 255, 255));
-        Int4.setText("- B  U2122XXX");
-        jPanel1.add(Int4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 160, 20));
-
-        Int5.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        Int5.setForeground(new java.awt.Color(255, 255, 255));
-        Int5.setText("- Nelson Jhon Gil Pari - U21221490");
-        jPanel1.add(Int5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 240, 20));
-
-        btnVolver.setBackground(new java.awt.Color(102, 102, 102));
-        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVolverMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnVolverMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnVolverMouseExited(evt);
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
             }
         });
-
-        Volver.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        Volver.setForeground(new java.awt.Color(255, 255, 255));
-        Volver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Volver.setText("Volver");
-
-        javax.swing.GroupLayout btnVolverLayout = new javax.swing.GroupLayout(btnVolver);
-        btnVolver.setLayout(btnVolverLayout);
-        btnVolverLayout.setHorizontalGroup(
-            btnVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVolverLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        btnVolverLayout.setVerticalGroup(
-            btnVolverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVolverLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 70, 20));
-
-        header.setBackground(new java.awt.Color(51, 51, 51));
-        header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                headerMouseDragged(evt);
-            }
-        });
-        header.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                headerMousePressed(evt);
-            }
-        });
-        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        exitbtn.setBackground(new java.awt.Color(89, 89, 89));
-
-        btnExit.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(255, 255, 255));
-        btnExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnExit.setText("X");
-        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExitMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnExitMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnExitMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout exitbtnLayout = new javax.swing.GroupLayout(exitbtn);
-        exitbtn.setLayout(exitbtnLayout);
-        exitbtnLayout.setHorizontalGroup(
-            exitbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-        exitbtnLayout.setVerticalGroup(
-            exitbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        header.add(exitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 30, -1));
-
-        minbtn.setBackground(new java.awt.Color(89, 89, 89));
-
-        btnMin.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btnMin.setForeground(new java.awt.Color(255, 255, 255));
-        btnMin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMin.setText("_");
-        btnMin.setToolTipText("");
-        btnMin.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        btnMin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMinMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMinMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMinMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout minbtnLayout = new javax.swing.GroupLayout(minbtn);
-        minbtn.setLayout(minbtnLayout);
-        minbtnLayout.setHorizontalGroup(
-            minbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMin, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-        minbtnLayout.setVerticalGroup(
-            minbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        header.add(minbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 30, 30));
-
-        titulo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setText("Acerca del Programa");
-        header.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 6, 130, 20));
-
-        jPanel1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 30));
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         RogImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/AcercaPOO.png"))); // NOI18N
-        jPanel1.add(RogImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 300, 300));
+        jPanel1.add(RogImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,7 +62,7 @@ public class FrmAcerca extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -222,56 +70,11 @@ public class FrmAcerca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
-        xMouse=evt.getX();
-        yMouse=evt.getY();
-    }//GEN-LAST:event_headerMousePressed
-
-    private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x-xMouse,y-yMouse);
-    }//GEN-LAST:event_headerMouseDragged
-
-    private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
-        FrmLogin lgn = new FrmLogin(principal);
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        FrmLogin lgn = new FrmLogin(negocio);
         lgn.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnExitMouseClicked
-
-    private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
-        exitbtn.setBackground(new java.awt.Color(211,77,77));
-    }//GEN-LAST:event_btnExitMouseEntered
-
-    private void btnExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseExited
-        exitbtn.setBackground(new java.awt.Color(89,89,89));
-    }//GEN-LAST:event_btnExitMouseExited
-
-    private void btnMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinMouseClicked
-        this.setExtendedState(FrmAcerca.ICONIFIED);
-    }//GEN-LAST:event_btnMinMouseClicked
-
-    private void btnMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinMouseEntered
-        minbtn.setBackground(new java.awt.Color(120,120,120));
-    }//GEN-LAST:event_btnMinMouseEntered
-
-    private void btnMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinMouseExited
-        minbtn.setBackground(new java.awt.Color(89,89,89));
-    }//GEN-LAST:event_btnMinMouseExited
-
-    private void btnVolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseClicked
-        FrmLogin lgn = new FrmLogin(principal);
-        lgn.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnVolverMouseClicked
-
-    private void btnVolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseEntered
-        btnVolver.setBackground(new java.awt.Color(153,153,153));
-    }//GEN-LAST:event_btnVolverMouseEntered
-
-    private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
-        btnVolver.setBackground(new java.awt.Color(102,102,102));
-    }//GEN-LAST:event_btnVolverMouseExited
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,28 +137,18 @@ public class FrmAcerca extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Negocio aux = null;
-                new FrmAcerca(aux).setVisible(true);
+                Negocio negocio = new Negocio(); // Create one instance
+                FrmAcerca aceraForm = new FrmAcerca(negocio);
+                aceraForm.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Int1;
-    private javax.swing.JLabel Int2;
-    private javax.swing.JLabel Int3;
-    private javax.swing.JLabel Int4;
-    private javax.swing.JLabel Int5;
+    private javax.swing.JLabel Integrante;
     private javax.swing.JLabel RogImg;
     private javax.swing.JLabel Titulo;
-    private javax.swing.JLabel Volver;
-    private javax.swing.JLabel btnExit;
-    private javax.swing.JLabel btnMin;
-    private javax.swing.JPanel btnVolver;
-    private javax.swing.JPanel exitbtn;
-    private javax.swing.JPanel header;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel minbtn;
-    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }

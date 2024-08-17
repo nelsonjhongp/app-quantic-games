@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 public class Negocio {
     
     private static Negocio instance;
-    List<Producto> dataProductos= new ArrayList();
+    List<Producto> dataProductos = new ArrayList();
     List<Clientes> dataClientes = new ArrayList();
     List<Venta> dataVentas      = new ArrayList();
     List<Detalle> dataDetalles = new ArrayList();

@@ -36,14 +36,14 @@ public class DaoUsuario {
         return mensaje.toString().trim();
     }
 
-    public void processLogin(String usuario, String contrasena, JFrame aaaa) {
+    public void processLogin(String usuario, String contrasena, JFrame framActual) {
         Usuario userdato = nlogin.getTablaLogin().obtenerValorTabHash(usuario);
 
         if (userdato != null) {
             if (contrasena.equals(userdato.getContraseña())) {
                 nlogin.setCargoUsuarioLogin(userdato.getCargo());
                 new FrmMenu(nlogin).setVisible(true);
-                aaaa.dispose();
+                framActual.dispose();
             } else {
                 showErrorMessage("Contraseña incorrecta", "La Contraseña no coincide");
             }
