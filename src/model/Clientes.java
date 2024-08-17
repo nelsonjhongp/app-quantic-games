@@ -1,4 +1,4 @@
-package modelo;
+package model;
 /*@author Nelson*/
 public class Clientes {
     private static int contar = 1; 

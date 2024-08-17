@@ -1,33 +1,23 @@
 
 package vista;
 
-import controlador.Negocio;
-import estructuradatos.TablaHash;
-import java.awt.Image;
+import controller.DaoUsuario;
+import controller.Negocio;
 import java.awt.event.KeyEvent;
-import java.net.URL;
-import java.util.HashMap;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import modelo.Usuario;
+import utils.ThemeManager;
 
 /*@author Nelson*/
 public class FrmLogin extends javax.swing.JFrame {
     private Negocio nlogin;
-    int xMouse, yMouse;
+    
     public FrmLogin(Negocio general) {
         initComponents();
-        if (general == null) {
-            System.out.println("No hay Negocio, se crea nueva instancia");
-            this.nlogin = new Negocio();
-        } else {
-            System.out.println("Hay Negocio, se procede a incorporarlo");
-            this.nlogin =  general;}
+        this.nlogin = Negocio.getInstance();
         
-        imageIconCambiar(userRegistro.class.getResource("/images/ocultar.png"),passicon,20);
+        ThemeManager.registerFrame(this);
+        ThemeManager.applyTheme();
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,120 +28,35 @@ public class FrmLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnAcerca = new javax.swing.JPanel();
-        Acerca = new javax.swing.JLabel();
-        btnIngresar = new javax.swing.JPanel();
-        Ingresar = new javax.swing.JLabel();
         Logo = new javax.swing.JLabel();
         errorCon = new javax.swing.JLabel();
         errorUs = new javax.swing.JLabel();
         Usuario = new javax.swing.JLabel();
         campoUsu = new javax.swing.JTextField();
-        Separator1 = new javax.swing.JSeparator();
         Contraseña = new javax.swing.JLabel();
         campoCon = new javax.swing.JPasswordField();
-        Separator2 = new javax.swing.JSeparator();
-        passicon = new javax.swing.JLabel();
+        btnAcerca = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
+        showHide = new javax.swing.JCheckBox();
         RogImg = new javax.swing.JLabel();
-        header = new javax.swing.JPanel();
-        exitbtn = new javax.swing.JPanel();
-        btnExit = new javax.swing.JLabel();
-        minbtn = new javax.swing.JPanel();
-        btnMin = new javax.swing.JLabel();
-        titulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ingresar Cuenta");
         setLocationByPlatform(true);
-        setUndecorated(true);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAcerca.setBackground(new java.awt.Color(102, 102, 102));
-        btnAcerca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAcercaMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAcercaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAcercaMouseExited(evt);
-            }
-        });
-
-        Acerca.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        Acerca.setForeground(new java.awt.Color(255, 255, 255));
-        Acerca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Acerca.setText("Acerca del programa");
-
-        javax.swing.GroupLayout btnAcercaLayout = new javax.swing.GroupLayout(btnAcerca);
-        btnAcerca.setLayout(btnAcercaLayout);
-        btnAcercaLayout.setHorizontalGroup(
-            btnAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAcercaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Acerca, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        btnAcercaLayout.setVerticalGroup(
-            btnAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAcercaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Acerca, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel1.add(btnAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 470, 130, 30));
-
-        btnIngresar.setBackground(new java.awt.Color(102, 102, 102));
-        btnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIngresarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnIngresarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnIngresarMouseExited(evt);
-            }
-        });
-
-        Ingresar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        Ingresar.setForeground(new java.awt.Color(255, 255, 255));
-        Ingresar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Ingresar.setText("Ingresar");
-
-        javax.swing.GroupLayout btnIngresarLayout = new javax.swing.GroupLayout(btnIngresar);
-        btnIngresar.setLayout(btnIngresarLayout);
-        btnIngresarLayout.setHorizontalGroup(
-            btnIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnIngresarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        btnIngresarLayout.setVerticalGroup(
-            btnIngresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnIngresarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Ingresar, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 130, 30));
-
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogoMin.png"))); // NOI18N
-        Logo.setText("jLabel1");
-        jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 220, 125));
-        jPanel1.add(errorCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 20, 20));
-        jPanel1.add(errorUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 20, 20));
+        Logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nelson\\Documents\\NetBeansProjects\\PryQGames_V4.1\\resources\\images\\LogoMin.png")); // NOI18N
+        jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 125));
+        jPanel1.add(errorCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, 20, 20));
+        jPanel1.add(errorUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 20, 20));
 
         Usuario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Usuario.setForeground(new java.awt.Color(255, 255, 255));
         Usuario.setText("Usuario");
-        jPanel1.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 190, 20));
+        jPanel1.add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 190, 20));
 
         campoUsu.setBackground(new java.awt.Color(51, 51, 51));
         campoUsu.setForeground(new java.awt.Color(255, 255, 255));
@@ -162,13 +67,12 @@ public class FrmLogin extends javax.swing.JFrame {
                 campoUsuKeyPressed(evt);
             }
         });
-        jPanel1.add(campoUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 180, 20));
-        jPanel1.add(Separator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 180, 10));
+        jPanel1.add(campoUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 180, 20));
 
         Contraseña.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Contraseña.setForeground(new java.awt.Color(255, 255, 255));
         Contraseña.setText("Contraseña");
-        jPanel1.add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 190, 20));
+        jPanel1.add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 190, 20));
 
         campoCon.setBackground(new java.awt.Color(51, 51, 51));
         campoCon.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,104 +84,38 @@ public class FrmLogin extends javax.swing.JFrame {
                 campoConKeyPressed(evt);
             }
         });
-        jPanel1.add(campoCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 180, 20));
-        jPanel1.add(Separator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 180, 10));
+        jPanel1.add(campoCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 20));
 
-        passicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/ocultar.png"))); // NOI18N
-        passicon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        passicon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                passiconMouseClicked(evt);
+        btnAcerca.setText("Acerca del programa");
+        btnAcerca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcercaActionPerformed(evt);
             }
         });
-        jPanel1.add(passicon, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 20, 20));
+        jPanel1.add(btnAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 430, -1, 30));
 
-        RogImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background_login.png"))); // NOI18N
-        jPanel1.add(RogImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 800, 500));
-
-        header.setBackground(new java.awt.Color(51, 51, 51));
-        header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                headerMouseDragged(evt);
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
             }
         });
-        header.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                headerMousePressed(evt);
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 130, 30));
+
+        showHide.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 255)));
+        showHide.setContentAreaFilled(false);
+        showHide.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        showHide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconOcultar.png"))); // NOI18N
+        showHide.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconMostrar.png"))); // NOI18N
+        showHide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showHideActionPerformed(evt);
             }
         });
-        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(showHide, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, -1, -1));
 
-        exitbtn.setBackground(new java.awt.Color(89, 89, 89));
-
-        btnExit.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(255, 255, 255));
-        btnExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnExit.setText("X");
-        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExitMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnExitMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnExitMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout exitbtnLayout = new javax.swing.GroupLayout(exitbtn);
-        exitbtn.setLayout(exitbtnLayout);
-        exitbtnLayout.setHorizontalGroup(
-            exitbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-        exitbtnLayout.setVerticalGroup(
-            exitbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        header.add(exitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 30, -1));
-
-        minbtn.setBackground(new java.awt.Color(89, 89, 89));
-
-        btnMin.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btnMin.setForeground(new java.awt.Color(255, 255, 255));
-        btnMin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMin.setText("_");
-        btnMin.setToolTipText("");
-        btnMin.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        btnMin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMinMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMinMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMinMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout minbtnLayout = new javax.swing.GroupLayout(minbtn);
-        minbtn.setLayout(minbtnLayout);
-        minbtnLayout.setHorizontalGroup(
-            minbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMin, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-        minbtnLayout.setVerticalGroup(
-            minbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        header.add(minbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 0, 30, 30));
-
-        titulo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setText("Ingresar Cuenta");
-        header.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 6, 130, 20));
-
-        jPanel1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 30));
+        RogImg.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nelson\\Documents\\NetBeansProjects\\PryQGames_V4.1\\resources\\images\\background_login.png")); // NOI18N
+        jPanel1.add(RogImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,148 +125,13 @@ public class FrmLogin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
-        xMouse=evt.getX();
-        yMouse=evt.getY();
-    }//GEN-LAST:event_headerMousePressed
-
-    private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x-xMouse,y-yMouse);
-    }//GEN-LAST:event_headerMouseDragged
-
-    private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_btnExitMouseClicked
-
-    private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
-        exitbtn.setBackground(new java.awt.Color(211,77,77));
-    }//GEN-LAST:event_btnExitMouseEntered
-
-    private void btnExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseExited
-        exitbtn.setBackground(new java.awt.Color(89,89,89));
-    }//GEN-LAST:event_btnExitMouseExited
-
-    private void btnMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinMouseClicked
-        this.setExtendedState(FrmLogin.ICONIFIED);
-    }//GEN-LAST:event_btnMinMouseClicked
-
-    private void btnMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinMouseEntered
-        minbtn.setBackground(new java.awt.Color(120,120,120));
-    }//GEN-LAST:event_btnMinMouseEntered
-
-    private void btnMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinMouseExited
-        minbtn.setBackground(new java.awt.Color(89,89,89));
-    }//GEN-LAST:event_btnMinMouseExited
-
-    private void btnAcercaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAcercaMouseClicked
-        FrmAcerca acr = new FrmAcerca(nlogin);
-        acr.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnAcercaMouseClicked
-
-    private void btnAcercaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAcercaMouseExited
-        btnAcerca.setBackground(new java.awt.Color(102,102,102));
-    }//GEN-LAST:event_btnAcercaMouseExited
-
-    private void btnAcercaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAcercaMouseEntered
-        btnAcerca.setBackground(new java.awt.Color(153,153,153));
-    }//GEN-LAST:event_btnAcercaMouseEntered
-
-    private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
-        String contra = new String(campoCon.getPassword());
-        String usuar = campoUsu.getText().toString();
-        
-        String mensaje = "";
-        boolean datosValicion = false;
-        
-        if (usuar.equals("") && contra.equals("")) {
-            datosValicion = false;
-            mensaje = "Falta Usuario y Contraseña";
-                        
-            imageIconCambiar(userRegistro.class.getResource("/images/infoerror.png"), errorUs,20);
-            imageIconCambiar(userRegistro.class.getResource("/images/infoerror.png"), errorCon,20);
-            
-        } else if (usuar.equals("")) {
-            datosValicion = false;
-            mensaje = "Falta Usuario";
-            
-            imageIconCambiar(userRegistro.class.getResource("/images/infoerror.png"), errorUs,20);
-            errorCon.setIcon(null);            
-        } else if (contra.equals("")) {
-            datosValicion = false;
-            mensaje = "Falta Contraseña";
-            
-            imageIconCambiar(userRegistro.class.getResource("/images/infoerror.png"), errorCon,20);
-            errorUs.setIcon(null);
-        } else {
-            datosValicion = true;
-            
-            errorUs.setIcon(null);
-            errorCon.setIcon(null);
-        }
-        
-        //Si la contraseña y usuario es correcta = TRUE = DATOSVALIDACION
-        if (datosValicion) {
-            
-            TablaHash tblLogin = nlogin.getTablaLogin();
-            Usuario userdato = tblLogin.obtenerValorTabHash(usuar);
-            
-            if (userdato != null) {
-                if (contra.equals(userdato.getContraseña())) {
-                    System.out.println("Contraseña igual");
-
-                    nlogin.setCargoUsuarioLogin(userdato.getCargo());
-
-                    FrmMenu mn = new FrmMenu(nlogin);
-                    mn.setVisible(true);
-                    this.dispose();
-            
-                } else {
-                    JOptionPane.showMessageDialog(null, "Contraseña incorrecta", "La Contraseña no coincide", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "El usuario no existe", "Usuario no encontrado", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, ""+mensaje,"Faltan Datos",JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_btnIngresarMouseClicked
-
-    private void btnIngresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseEntered
-        btnIngresar.setBackground(new java.awt.Color(153,153,153));
-    }//GEN-LAST:event_btnIngresarMouseEntered
-
-    private void btnIngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseExited
-        btnIngresar.setBackground(new java.awt.Color(102,102,102));
-    }//GEN-LAST:event_btnIngresarMouseExited
     
-    boolean mostrarContrasena = false;
-    private void passiconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passiconMouseClicked
-        mostrarContrasena = !mostrarContrasena;
-        URL resource;
-        if (mostrarContrasena) {
-            campoCon.setEchoChar((char) 0); // Mostrar contraseña sin asteriscos
-            campoCon.setEchoChar((char) 0);
-            resource = userRegistro.class.getResource("/images/mostrar.png");
-        } else {
-            campoCon.setEchoChar('*'); // Mostrar contraseña con asteriscos
-            campoCon.setEchoChar('*');
-            resource = userRegistro.class.getResource("/images/ocultar.png");
-        }
-        imageIconCambiar(resource, passicon, 20);
-    }//GEN-LAST:event_passiconMouseClicked
-
     private void campoUsuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoUsuKeyPressed
         enterLogin(evt);
     }//GEN-LAST:event_campoUsuKeyPressed
@@ -437,18 +140,37 @@ public class FrmLogin extends javax.swing.JFrame {
         enterLogin(evt);
     }//GEN-LAST:event_campoConKeyPressed
 
+    private void btnAcercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcercaActionPerformed
+        FrmAcerca acr = new FrmAcerca(nlogin);
+        acr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAcercaActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        String contrasena = new String(campoCon.getPassword());
+        String usuario = campoUsu.getText().trim();
+        DaoUsuario daoUser = new DaoUsuario(nlogin);
+        String mensaje = daoUser.validarEntradaDeDatos(usuario, contrasena, errorUs, errorCon);
+
+        if (mensaje.isEmpty()) {
+            daoUser.processLogin(usuario, contrasena, this);
+        } else {
+            JOptionPane.showMessageDialog(null, mensaje, "Faltan Datos", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void showHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showHideActionPerformed
+        if (showHide.isSelected()) 
+            campoCon.setEchoChar((char) 0);
+        else 
+            campoCon.setEchoChar('\u2022');
+    }//GEN-LAST:event_showHideActionPerformed
+
+    //Presionando el boton de Enter se acciona el boton de inigresar
     public void enterLogin(java.awt.event.KeyEvent evt){
         if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
-            btnIngresarMouseClicked(null);
+            btnIngresarActionPerformed(null);
         }
-    }
-    
-    public void imageIconCambiar(URL resource, JLabel iconoMod, int tamaño) {
-        ImageIcon iconLogo = new ImageIcon(resource);
-        Image image = iconLogo.getImage();
-        Image imgRescalado = image.getScaledInstance(tamaño, tamaño, java.awt.Image.SCALE_SMOOTH);
-        iconLogo = new ImageIcon(imgRescalado);
-        iconoMod.setIcon(iconLogo);
     }
     /**
      * @param args the command line arguments
@@ -495,34 +217,25 @@ public class FrmLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Negocio aux = null;
-                new FrmLogin(aux).setVisible(true);
+                Negocio negocio = new Negocio(); // Create one instance
+                FrmLogin loginForm = new FrmLogin(negocio);
+                loginForm.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Acerca;
     private javax.swing.JLabel Contraseña;
-    private javax.swing.JLabel Ingresar;
     private javax.swing.JLabel Logo;
     private javax.swing.JLabel RogImg;
-    private javax.swing.JSeparator Separator1;
-    private javax.swing.JSeparator Separator2;
     private javax.swing.JLabel Usuario;
-    private javax.swing.JPanel btnAcerca;
-    private javax.swing.JLabel btnExit;
-    private javax.swing.JPanel btnIngresar;
-    private javax.swing.JLabel btnMin;
+    private javax.swing.JButton btnAcerca;
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JPasswordField campoCon;
     private javax.swing.JTextField campoUsu;
     private javax.swing.JLabel errorCon;
     private javax.swing.JLabel errorUs;
-    private javax.swing.JPanel exitbtn;
-    private javax.swing.JPanel header;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel minbtn;
-    private javax.swing.JLabel passicon;
-    private javax.swing.JLabel titulo;
+    private javax.swing.JCheckBox showHide;
     // End of variables declaration//GEN-END:variables
 }

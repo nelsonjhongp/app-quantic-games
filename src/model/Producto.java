@@ -1,5 +1,5 @@
 
-package modelo;
+package model;
 
 public class Producto {
     private static int contar = 1; 

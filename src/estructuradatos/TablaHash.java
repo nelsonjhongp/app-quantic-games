@@ -1,7 +1,7 @@
 
 package estructuradatos;
 
-import modelo.Usuario;
+import model.Usuario;
 
 /** @author Nelson **/
 

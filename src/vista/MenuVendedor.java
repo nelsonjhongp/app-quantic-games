@@ -5,8 +5,8 @@
 package vista;
 
 import java.util.Vector;
-import controlador.Colas;
-import modelo.Vendedor;
+import controller.Colas;
+import model.Vendedor;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 /**

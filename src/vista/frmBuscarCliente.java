@@ -4,7 +4,7 @@
  */
 package vista;
 
-import controlador.Negocio;
+import controller.Negocio;
 import javax.swing.table.DefaultTableModel;
 
 /**

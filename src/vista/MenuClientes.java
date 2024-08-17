@@ -4,8 +4,8 @@
  */
 package vista;
 
-import controlador.Negocio;
-import modelo.Clientes;
+import controller.Negocio;
+import model.Clientes;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;

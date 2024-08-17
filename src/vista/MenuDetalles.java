@@ -1,6 +1,6 @@
 package vista;
 
-import controlador.Negocio;
+import controller.Negocio;
 import java.awt.BorderLayout;
 import javax.swing.table.DefaultTableModel;
 

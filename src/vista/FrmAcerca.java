@@ -1,7 +1,7 @@
 
 package vista;
 
-import controlador.Negocio;
+import controller.Negocio;
 import java.awt.Color;
 import java.awt.geom.RoundRectangle2D;
 

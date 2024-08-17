@@ -1,12 +1,12 @@
 
 package vista;
 
-import controlador.Negocio;
+import controller.Negocio;
 import estructuradatos.TablaHash;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Usuario;
+import model.Usuario;
 import vista.FrmUsuarios.*;
 
 /*@author Nelson*/

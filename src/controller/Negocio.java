@@ -1,12 +1,20 @@
-package controlador;
+package controller;
 
+import model.Detalle;
+import model.Vendedor;
+import model.Usuario;
+import model.Producto;
+import model.Venta;
+import model.Clientes;
 import java.util.*;
-import modelo.*;
 import estructuradatos.*;
 import estructuradatos.arbolBinario.SimuladorArbolBinario;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
+
 public class Negocio {
+    
+    private static Negocio instance;
     List<Producto> dataProductos= new ArrayList();
     List<Clientes> dataClientes = new ArrayList();
     List<Venta> dataVentas      = new ArrayList();
@@ -35,6 +43,13 @@ public class Negocio {
         datosVendedores();
         datosUsuarios();
         datosArbo();
+    }
+    
+    public static Negocio getInstance() {
+        if (instance == null) {
+            instance = new Negocio();
+        }
+        return instance;
     }
     
     public SimuladorArbolBinario envioArbol(){

@@ -1,4 +1,4 @@
-package controlador;
+package controller;
 
 /*
  * To change this template, choose Tools | Templates
@@ -6,7 +6,7 @@ package controlador;
  */
 
 
-import modelo.Vendedor;
+import model.Vendedor;
 
 public class Colas {
     public Vendedor dato;

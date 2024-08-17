@@ -1,7 +1,7 @@
 
 package vista;
 
-import controlador.Negocio;
+import controller.Negocio;
 import java.awt.BorderLayout;
 import java.util.logging.Level;
 import java.util.logging.Logger;

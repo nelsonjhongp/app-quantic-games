@@ -1,13 +1,13 @@
 
 package vista;
-import controlador.Negocio;
+import controller.Negocio;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Producto;
-import modelo.Venta;
+import model.Producto;
+import model.Venta;
 
 /*@author Nelson*/
 public class MenuCompras extends javax.swing.JPanel {

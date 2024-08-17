@@ -1,12 +1,12 @@
 package vista;
 
 import javax.swing.table.DefaultTableModel;
-import controlador.Negocio;
+import controller.Negocio;
 import estructuradatos.arbolBinario.vistaArbol;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
-import modelo.Producto;
+import model.Producto;
 import vista.*;
 
 /*@author Nelson*/

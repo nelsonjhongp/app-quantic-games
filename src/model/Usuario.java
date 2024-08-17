@@ -1,4 +1,4 @@
-package modelo;
+package model;
 /*@author Nelson*/
 public class Usuario {
     private String contrasena;

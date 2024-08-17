@@ -1,11 +1,11 @@
 
 package vista;
 
-import controlador.Negocio;
+import controller.Negocio;
 import java.awt.Image;
 import java.net.URL;
 import javax.swing.ImageIcon;
-import modelo.Usuario;
+import model.Usuario;
 import vista.FrmUsuarios.*;
 
 /**
