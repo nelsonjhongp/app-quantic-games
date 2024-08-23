@@ -3,25 +3,22 @@ package vista;
 
 import controller.Negocio;
 import java.awt.BorderLayout;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import utils.ThemeManager;
 
 /*@author Nelson*/
 public class FrmMenu extends javax.swing.JFrame {
-    private Negocio principal;
+    private Negocio negocio;
     
-    int xMouse, yMouse;
     public FrmMenu(Negocio general) {
         initComponents();
-        if (general == null) {
-            System.out.println("No hay Negocio, se crea nueva instancia");
-            this.principal = new Negocio();
-        } else {
-            System.out.println("Hay Negocoi, se procede a incorporarlo");
-            this.principal =  general;}
-        lblcargoAhora.setText(principal.getCargoUsuarioLogin());
+        this.negocio = Negocio.getInstance();
+        
+        ThemeManager.registerFrame(this);
+        ThemeManager.applyThemeLight();
+        
+        lblcargoAhora.setText(negocio.getCargoUsuarioLogin());
         btnVentaMouseClicked(null);
     }
 
@@ -43,12 +40,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        header = new javax.swing.JPanel();
-        exitbtn = new javax.swing.JPanel();
-        btnExit = new javax.swing.JLabel();
-        minbtn = new javax.swing.JPanel();
-        btnMin = new javax.swing.JLabel();
-        titulo = new javax.swing.JLabel();
         MenuBtns = new javax.swing.JPanel();
         lblIcono = new javax.swing.JLabel();
         btnVenta = new javax.swing.JPanel();
@@ -70,96 +61,12 @@ public class FrmMenu extends javax.swing.JFrame {
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu QuantGames");
         setLocationByPlatform(true);
-        setUndecorated(true);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        header.setBackground(new java.awt.Color(37, 50, 55));
-        header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                headerMouseDragged(evt);
-            }
-        });
-        header.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                headerMousePressed(evt);
-            }
-        });
-        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        exitbtn.setBackground(new java.awt.Color(89, 89, 89));
-
-        btnExit.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(255, 255, 255));
-        btnExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnExit.setText("X");
-        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExitMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnExitMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnExitMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout exitbtnLayout = new javax.swing.GroupLayout(exitbtn);
-        exitbtn.setLayout(exitbtnLayout);
-        exitbtnLayout.setHorizontalGroup(
-            exitbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-        exitbtnLayout.setVerticalGroup(
-            exitbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        header.add(exitbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 30, -1));
-
-        minbtn.setBackground(new java.awt.Color(89, 89, 89));
-
-        btnMin.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btnMin.setForeground(new java.awt.Color(255, 255, 255));
-        btnMin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMin.setText("_");
-        btnMin.setToolTipText("");
-        btnMin.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        btnMin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMinMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMinMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMinMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout minbtnLayout = new javax.swing.GroupLayout(minbtn);
-        minbtn.setLayout(minbtnLayout);
-        minbtnLayout.setHorizontalGroup(
-            minbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMin, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-        minbtnLayout.setVerticalGroup(
-            minbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnMin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-        );
-
-        header.add(minbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 30, 30));
-
-        titulo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setText("Menu QuantGames");
-        header.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 6, 130, 20));
-
-        jPanel1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
 
         MenuBtns.setBackground(new java.awt.Color(92, 107, 115));
         MenuBtns.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -454,7 +361,7 @@ public class FrmMenu extends javax.swing.JFrame {
         lbltextocargoahora.setText("c:");
         MenuBtns.add(lbltextocargoahora, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 20, 20));
 
-        jPanel1.add(MenuBtns, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 200, 600));
+        jPanel1.add(MenuBtns, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 600));
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
@@ -467,7 +374,7 @@ public class FrmMenu extends javax.swing.JFrame {
             .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        jPanel1.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 800, 600));
+        jPanel1.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 800, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -493,7 +400,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnComprasMouseEntered
 
     private void btnComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprasMouseClicked
-        MenuCompras pan = new MenuCompras(principal);
+        MenuCompras pan = new MenuCompras(negocio);
         ShowPanel(pan);
     }//GEN-LAST:event_btnComprasMouseClicked
 
@@ -506,7 +413,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClientesMouseEntered
 
     private void btnClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseClicked
-        MenuClientes pan = new MenuClientes(principal);
+        MenuClientes pan = new MenuClientes(negocio);
         ShowPanel(pan);
     }//GEN-LAST:event_btnClientesMouseClicked
 
@@ -532,7 +439,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductosMouseEntered
 
     private void btnProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseClicked
-        MenuProductos pan = new MenuProductos(principal);
+        MenuProductos pan = new MenuProductos(negocio);
         ShowPanel(pan);
     }//GEN-LAST:event_btnProductosMouseClicked
 
@@ -545,9 +452,9 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarMouseEntered
 
     private void btnCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseClicked
-        FrmLogin lgn = new FrmLogin(principal);
+        FrmLogin lgn = new FrmLogin(negocio);
         
-        principal.setCargoUsuarioLogin("");
+        negocio.setCargoUsuarioLogin("");
         
         lgn.setVisible(true);
         this.dispose();
@@ -562,44 +469,9 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVentaMouseEntered
 
     private void btnVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVentaMouseClicked
-        MenuVenta ven = new MenuVenta(principal);
+        MenuVenta ven = new MenuVenta(negocio);
         ShowPanel(ven);
     }//GEN-LAST:event_btnVentaMouseClicked
-
-    private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
-        xMouse=evt.getX();
-        yMouse=evt.getY();
-    }//GEN-LAST:event_headerMousePressed
-
-    private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x-xMouse,y-yMouse);
-    }//GEN-LAST:event_headerMouseDragged
-
-    private void btnMinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinMouseExited
-        minbtn.setBackground(new java.awt.Color(89,89,89));
-    }//GEN-LAST:event_btnMinMouseExited
-
-    private void btnMinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinMouseEntered
-        minbtn.setBackground(new java.awt.Color(120,120,120));
-    }//GEN-LAST:event_btnMinMouseEntered
-
-    private void btnMinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinMouseClicked
-        this.setExtendedState(FrmLogin.ICONIFIED);
-    }//GEN-LAST:event_btnMinMouseClicked
-
-    private void btnExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseExited
-        exitbtn.setBackground(new java.awt.Color(89,89,89));
-    }//GEN-LAST:event_btnExitMouseExited
-
-    private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
-        exitbtn.setBackground(new java.awt.Color(211,77,77));
-    }//GEN-LAST:event_btnExitMouseEntered
-
-    private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_btnExitMouseClicked
 
     private void btnTiendasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendasMouseClicked
         // TODO add your handling code here:
@@ -626,8 +498,8 @@ public class FrmMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_lblIconoMouseEntered
 
     private void lblIconoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconoMouseClicked
-        if (principal.getCargoUsuarioLogin().equals("Administrador")) {
-            FrmUsuarios frm = new FrmUsuarios(principal);
+        if (negocio.getCargoUsuarioLogin().equals("Administrador")) {
+            FrmUsuarios frm = new FrmUsuarios(negocio);
             frm.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(
@@ -643,156 +515,6 @@ public class FrmMenu extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -807,20 +529,15 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel btnCerrar;
     private javax.swing.JPanel btnClientes;
     private javax.swing.JPanel btnCompras;
-    private javax.swing.JLabel btnExit;
-    private javax.swing.JLabel btnMin;
     private javax.swing.JPanel btnProductos;
     private javax.swing.JPanel btnTiendas;
     private javax.swing.JPanel btnVendedores;
     private javax.swing.JPanel btnVenta;
     private javax.swing.JPanel content;
-    private javax.swing.JPanel exitbtn;
-    private javax.swing.JPanel header;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel lblcargoAhora;
     private javax.swing.JLabel lbltextocargoahora;
-    private javax.swing.JPanel minbtn;
     private javax.swing.JLabel text3;
     private javax.swing.JLabel text4;
     private javax.swing.JLabel text5;
@@ -828,14 +545,13 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JLabel text7;
     private javax.swing.JLabel text8;
     private javax.swing.JLabel text9;
-    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 
     public Negocio getPrincipal() {
-        return principal;
+        return negocio;
     }
 
     public void setPrincipal(Negocio principal) {
-        this.principal = principal;
+        this.negocio = principal;
     }
 }

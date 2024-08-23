@@ -2,6 +2,7 @@
 package utils;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -31,6 +32,14 @@ public class ThemeManager {
     public static void applyTheme() {
         try {
             UIManager.setLookAndFeel(new FlatDarkLaf());
+            updateAllFrames();
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize LaF");
+        }
+    }
+    public static void applyThemeLight() {
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
             updateAllFrames();
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
