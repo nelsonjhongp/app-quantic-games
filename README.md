@@ -1,9 +1,8 @@
 # Quantic-Games
 
-![Quantic-Games Banner](https://github.com/tu_usuario/quantic-games-app/blob/main/quanticgamesbanner.png)
+![image alt]([https://github.com/tu_usuario/quantic-games-app/blob/main/quanticgamesbanner.png](https://github.com/nelsonjhongp/app-quantic-games/blob/9f37e63af7bacab19c7897e41b12d6b87e2d6cb5/qgamesbanner.png))
 
-**Quantic-Games** es una aplicación diseñada como tienda virtual para la venta de productos de videojuegos, como consolas, mandos y juegos. Este proyecto, desarrollado como parte del curso de **Algoritmos y Estructuras de Datos**, tiene como objetivo simular una empresa ficticia de videojuegos. Quantic Games gestiona ventas, inventarios, tiendas y empleados, aplicando conceptos avanzados de programación, como algoritmos y estructuras de datos. En el sistema, se implementan técnicas para ordenar y buscar información de manera eficiente, permitiendo la gestión de productos y operaciones dentro de la plataforma.
-
+**Quantic-Games** es una tienda virtual para la venta de productos de videojuegos, como consolas, mandos y juegos. Este proyecto, desarrollado en el marco del curso de **Algoritmos y Estructuras de Datos**, simula una empresa ficticia gestionando ventas, inventarios y empleados, aplicando algoritmos y estructuras de datos para ordenar y buscar información eficientemente.
 
 ## Tecnologías utilizadas
 
@@ -58,7 +57,7 @@ public class MySQLConexion {
         Connection con = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/quanticgames";
+            String url = "jdbc:mysql://localhost/quanticgames";
             String usr = "root";
             String psw = "";
             con = DriverManager.getConnection(url, usr, psw);
