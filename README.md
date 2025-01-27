@@ -1,6 +1,6 @@
 # Quantic-Games
 
-![image alt]([https://github.com/tu_usuario/quantic-games-app/blob/main/quanticgamesbanner.png](https://github.com/nelsonjhongp/app-quantic-games/blob/9f37e63af7bacab19c7897e41b12d6b87e2d6cb5/qgamesbanner.png))
+![Quantic-Games Banner](https://github.com/nelsonjhongp/app-quantic-games/blob/9f37e63af7bacab19c7897e41b12d6b87e2d6cb5/qgamesbanner.png)
 
 **Quantic-Games** es una tienda virtual para la venta de productos de videojuegos, como consolas, mandos y juegos. Este proyecto, desarrollado en el marco del curso de **Algoritmos y Estructuras de Datos**, simula una empresa ficticia gestionando ventas, inventarios y empleados, aplicando algoritmos y estructuras de datos para ordenar y buscar información eficientemente.
 
